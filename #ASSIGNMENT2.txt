@@ -1,0 +1,45 @@
+ASSIGNMENT-2
+
+#1 write a pgm to find a factorial of user input number
+
+
+x=int(input('ent num'))
+factorial=1
+if n==0:
+   print(1)
+else:
+    for i in range (1,x+1):
+         factorial=factorial*i
+print('factorial',factorial)
+
+#2 given a integer n,print all integer less than or equal to n
+
+
+n=int(input('enter the num'))
+for i in range (0,n):
+ x=n*i
+ print(x)
+
+
+#3 given an integer, print the sum of all even integer less than or equal to n
+
+
+n=int(input('enter the num'))
+sum=0
+for i in range(2,n+1,2):
+      sum=sum+i
+print(sum)
+
+
+#4 given n, print the sum of all integers less than or equal to n which are divisible by 3 or 5
+
+
+n=int(input('ent the num'))
+sum=0
+for i in range(1,n+1):
+      if (i%3==0)|(i%5==0):
+         sum=sum+i
+print('sum is ',sum)
+
+
+"""

@@ -1,0 +1,50 @@
+#ASSIGNMENT :3
+
+
+#1 Write a function to check wether input string is palindrome.
+
+a=str(input('input ur word'))
+d=a.lower()
+def palindrome(d):
+    if d== d[::-1]: #[::-1] reversing the variable
+       print(d,'is palindrome')
+    else:
+      return print(d,'no')
+palindrome(d)
+
+
+#2 write a funtion to find the factorial of a number.
+
+
+def factorial(n):
+	x=1
+	if n==0:
+		print('factorial of zero is 1')
+		return
+	else:
+		for i in range(1,n+1):
+			   x=x*i
+	print(f'factorial of {n} is',x )
+	return
+n = int(input('enter a number'))
+
+factorial(n)
+
+"""
+#3 write a function to find the fibonacci series of the number.
+"""
+
+def fib(num):
+	l=[0]
+	a,b=0,1 #a=0 b=1
+	for i in range(num):
+		c=a+b 
+		a=b
+		b=c
+		l.append(a)
+	return l
+print(fib(int(input('Enter The Number'))))
+
+
+"""
+

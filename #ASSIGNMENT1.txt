@@ -1,0 +1,72 @@
+#ASSIGNMENT-1
+"""
+#1 WRITE A PGM TO CHECK WHETHER THE INPUT NUMBER IS odd OR even
+user1 =int(input('enter a number'))
+if user1%2==0:
+    print('entered number is even')
+else:
+    print('entered number is odd')
+"""
+
+#2 WRITE A PGM TO CHECK WHETHER THE INPUT NUMBER IS PRIME NUMBER
+"""
+
+num = int(input("Enter a number: "))
+flag = False
+
+if num == 1:
+    print(num, "is not a prime number")
+elif num > 1:
+    for i in range(2, num):
+        if (num % i) == 0:
+            flag = True 
+            break
+
+if flag: 
+    print(num, "is not a prime number")
+else:
+    print(num, "is a prime number")
+
+"""
+
+#3 WRITE A PGM TO CHECK WHETHER A PERSON IS ELIGIBLE FOR VOTING OR NOT
+"""
+age = int(input('ENTER YOUR AGE'))
+if age > 17:
+    print('PERSON IS ELIGIBLE FOR VOTING')
+
+else:
+    print('PERSON IS NOT ELIGIBLE FOR VOTING')
+"""
+
+#4 WRITE A PROGRAM TO CHECK WHETHER A NUMBER IS DIVISIBLE BY 7 OR 8
+"""
+num2 = int(input('ENTER A NUMBER'))
+if num2%7==0:
+     print('the given number is divisible by 7')
+elif (num2%8==0):
+     print('the given number is divisible by 8')
+else:
+     print('the given number is not divisible by 7 or 8')
+"""
+
+"""
+        
+#5 WRITE A PROGRAM TO CALCULATE THE ELECTRICITY BILL (ACCEPT FROM USER)
+#UNIT                 PRICE
+#FIRST 100 UNITS     NO CHARGE
+#NEXT 100 UNITS      RS 5 CHARGE
+#AFTER 200 UNITS     RS 10 PER UNIT
+#(for example if input unit is 350 then total bill amount is Rs 2000
+
+
+unit= float(input('enter the unit))
+if unit <=100:
+    print(f' BILL FOR {unit} unit IS ZERO')
+elif unit>200:
+    x=500+(unit-200)*10
+    print(f' bill for {unit} unit IS ',x)
+else:
+    y=(unit-100)*5
+    print(f'bill for {unit} unit is ',y)        
+
