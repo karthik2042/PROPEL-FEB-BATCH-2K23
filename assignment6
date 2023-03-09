@@ -1,0 +1,132 @@
+def student_add():
+    try:
+        rollno=int(input('Enter the roll number'))
+        if rollno<1:
+            raise Exception('Invalid roll number')
+        name=input('Enter the student name')
+        while True:
+            maths = int(input('Enter the mark for maths'))
+            if maths>100 or maths<0:
+                maths=int(input('Enter the mark in limit 1 to 100'))
+            else:
+                break
+        while True:
+            physics = int(input('Enter the mark for physics'))
+            if physics > 100 or physics < 0:
+                physics = int(input('Enter the mark in limit 1 to 100'))
+            else:
+                break
+        while True:
+            english = int(input('Enter the mark for english'))
+            if english > 100 or english < 0:
+                english = int(input('Enter the mark in limit 1 to 100'))
+            else:
+                break
+        while True:
+            programming = int(input('Enter the mark for programming'))
+            if programming > 100 or programming < 0:
+                programming = int(input('Enter the mark in limit 1 to 100'))
+            else:
+                break
+        studentRecord[rollno]={'name':name,'maths':maths,'physics':physics,'english':english,'programming':programming}
+        print('STUDENT MARK IS ADDED.......')
+
+    except ValueError:
+        print('Invalid input')
+    except Exception as a:
+        print(a)
+    return
+
+
+
+def student_delete():
+    try:
+        x= int(input('Enter the student roll number'))
+        if x not in studentRecord.keys():
+            raise Exception('ENTER VALID ROLL NUMBER')
+        del studentRec[x]
+        print('Student details deleted')
+    except  Exception as a:
+        print(a)
+
+
+def student_modify():
+    try:
+        x=int(input('enter the student roll number'))
+        if x not in studentRecord.keys():
+            raise  Exception('Enter valid roll number')
+        record=studentRecord[x]
+        mod= input(' Enter modication required \n n- name \n m- change mark maths \n p-change mark physics \n e- change mark english \n pr- change mark programming')
+        match mod:
+            case 'n':
+                record['name']=(input('enter the new name'))
+            case 'm':
+                record['maths'] = int(input('enter the new maths mark'))
+                if record['maths']>100 or record['maths']<0:
+                    raise Exception('mark limit 1 to 100')
+            case 'p':
+                record['physics']=int(input('enter the new physics mark'))
+                if record['physics']>100 or record['physics']<0:
+                    raise Exception('mark limit 1 to 100')
+            case 'e':
+                record['english']=int(input('enter new english mark'))
+                if record['english']>100 or record['english']<0:
+                    raise Exception('mark limit 1 to 100')
+            case 'pr':
+                record['programming']=int(input('enter new programming mark'))
+                if record['programming']>100 or record['programming']<0:
+                    raise Exception('mark limit 1 to 100')
+            case _:
+                print('invalid modification')
+    except Exception as a:
+        print(a)
+
+
+def student_display():
+    for x in studentRecord.keys():
+        rollnum=studentRecord[x]
+        print('\n ROLL NO',x)
+        print(' STUDENT NAME',rollnum['name'])
+        print(f'''
+        .......... MARKS.........
+        MATHS:{rollnum['maths']} \n PHYSICS:{rollnum['physics']} \n ENGLISH:{rollnum['english']} \n PROGRAMMING:{rollnum['programming']}''')
+
+
+def student_search():
+    try:
+        roll=int(input('enter the roll number'))
+        if roll not in studentRecord.keys():
+            raise Exception('invalid roll number')
+        print('\nSTUDENT ROLL:',roll)
+        print('STUDENT NAME',studentRecord[roll]['name'])
+        print(f'''.............mark..............
+    \n MATHS:{studentRecord[roll]['maths']} \n PHYSICS:{studentRecord[roll]['physics']} \n ENGLISH:{studentRecord[roll]['english']} \n PROGRAMMING {studentRec[roll]['programming']}''')
+    except Exception as a:
+        print(a)
+
+
+
+while True:
+    inpt=input('''
+............. STUDENT RECORD..........
+a- add student
+d- delete student
+m- modify student
+p- display all student records
+s- display a student record based on the roll number
+q- quit''')
+    match inpt:
+        case 'a':
+            student_add()
+        case 'd':
+            student_delete()
+        case 'm':
+            student_modify()
+        case 'p':
+            student_display()
+        case 's':
+            student_search()
+        case'q':
+            break
+        case _:
+            print('Invalid input')
