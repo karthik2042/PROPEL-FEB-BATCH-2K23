@@ -1,0 +1,109 @@
+/*Q1*/
+
+create table department5(
+  deptNo int primary key not null,
+  departmentName varchar(20),
+  location varchar(20)
+);
+
+desc department5
+
+create table employee5(
+  empNo int primary key not null,
+  managerId int not null,
+  firstName varchar(20),
+  lastName varchar(20),
+  userId int unique,
+  deptNo int,
+  salary number(6,2),
+  commision number(4,2),
+  Dated date,
+  designation char(15),
+  constraint empl01 foreign key(deptNo) references department5(deptNo)
+  );
+
+desc employee5
+
+insert into department5 values(1001,'Mechanical','TVM')
+insert into department5 values(1002,'Electrical','EKM')
+
+insert into employee5 values(140,5000,'karthik','PS',1401,1002,500.88,50.5,'10/03/2023','Eng')
+select * from employee5;
+select * from department5;
+
+
+/*Q2*/
+
+create table employee6(
+  employeeId int not null unique,
+  salary number(8,2)
+  );
+desc employee6
+Alter table employee6 add HRA number(5,2);
+Alter table employee6 add pf number(5,2) check (pf<5000);
+
+select * from employee6;
+
+/*Q3*/
+
+create table customer(
+  custno number(3) primary key not null,
+  custName varchar2(20),
+  Address varchar2(40) );
+
+
+create table orderO(
+  orderNo number(3) primary key not null,
+  custno number(3),
+  orderdate date,
+  constraint od_1 foreign key(custno) references customer(custno)
+);
+
+
+create table orderItem(
+   itemId number(3) primary key not null,
+   orderNo number(3),
+   itemName varchar2(20),
+   quantity number(3),
+   constraint od_2 foreign key(orderNo) references orderO(orderNo));
+
+
+alter table customer modify address varchar2(100);
+
+
+/*Q4*/
+
+create table Course(
+  courseId varchar2(5) primary key not null,
+  streamId varchar2(20),
+  title varchar2(40),
+  description varchar2(200),
+  fees number
+  );
+
+
+create table batch(
+  BatchId varchar2(30) primary key not null,
+  courseId varchar2(5),
+  BatchName char(1),
+  constraint Bh_01 foreign key(courseId) references course(courseId));
+
+create table student(
+  studId varchar2(20) primary key not null,
+  batchId varchar2(30),
+  LastName varchar2(25),
+  MiddleName varchar2(30),
+  FirstName varchar2(20),
+  Dob date,
+  Address varchar2(50),
+  City varchar2(20),
+  State varchar2(2),
+  Zipcode varchar2(9),
+  Telephone varchar2(10),
+  Fax varchar2(10),
+  Email varchar2(30),
+  Grade char(1),
+  check(grade in ('A','A+','A-','B','B+','B-','C','C+','C-','D','D+','D-','F','F+','F-'))
+  constraint st_01 foreign key(BatchId) references batch(BatchId));
+
+alter table student add constraint grade check(grade in ('A','A+','A-','B','B+','B-','C','C+','C-','D','D+','D-','F','F+','F-'));
