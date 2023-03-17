@@ -1,0 +1,136 @@
+/*Q1*/
+
+
+create table employee(
+ empno int not null,
+ ename varchar2(20),
+ deptno int not null);
+
+insert all
+into employee(empno,ename,deptno)
+ values(1001,'karthik',125)
+into employee(empno,ename,deptno)
+ values(1002,'Vijin',130)
+into employee(empno,ename,deptno)
+ values(1003,'gokul',140)
+SELECT * from dual;
+select * from employee;
+
+
+create table emp2(
+ id int not null,
+ lastname varchar(20),
+ deptid int not null);
+
+INSERT INTO emp2 select * from employee;
+
+select * from emp2
+
+======================================================================================
+/*Q2*/
+
+insert into employee values(1004,'jack',160)
+select * from employee
+
+=======================================================================================
+/*Q3*/
+
+create table department(
+  deptNo int primary key not null,
+  departmentName varchar(20),
+  floor number(2),
+  location varchar(20)
+);
+
+desc department
+
+create table employee(
+  empNo int primary key not null,
+  managerId int not null,
+  firstName varchar(20),
+  lastName varchar(20),
+  userId int unique,
+  deptNo int,
+  salary number(6,2),
+  commision number(4,2),
+  joiningDate varchar(10),
+  designation char(15),
+  constraint empl02 foreign key(deptNo) references department(deptNo)
+  on delete cascade);
+
+
+desc employee
+
+insert into department values(10,'Accounts',2,'Trivandrum')
+select * from department
+
+insert into employee values(101,5001,'karthik','PS',1401051,10,5000,50,'11/04/2016','Account')
+select * from employee
+
+
+
+================================================================================================
+/*Q5*/
+
+DELETE from customer where custno=100;
+
+============================================================================
+/*Q6*/
+
+insert into employee values(1005,506,'Karthik',null,null,null,null,null,null,null)
+select * from employee
+============================================================================
+/*Q7*/
+
+UPDATE customer set address='New Delhi' where custno=101;
+
+============================================================================
+/*Q8*/
+
+SELECT * from employee where deptno=100 and salary >5000;
+
+============================================================================
+/*Q9*/
+
+UPDATE employee set deptNo=10, firstName='Gokul' where empNo=1005;
+
+============================================================================
+/*Q10*/
+
+UPDATE student set Email='NA' where email is null;
+select * from student
+
+============================================================================
+/*Q11*/
+
+DELETE from student where age>20;
+
+============================================================================
+/*Q12*/
+
+DELETE from student where email is null and telephone is null;
+
+============================================================================
+/*Q13*/
+
+DELETE from student where dob Like '05/06/%';
+
+============================================================================
+/*Q14*/
+
+UPDATE student set firstName='XXXX', dob= Current_Date where firstName like '____a%'
+
+============================================================================
+/*Q15*/
+
+DELETE from student where state Like '%a';
+
+============================================================================
+/*Q16*/
+
+UPDATE student set lastName='Jan' where dob Like '01/01/%';
+
+============================================================================
+/*Q17*/
+
+DELETE from student where state Like 'T%';
