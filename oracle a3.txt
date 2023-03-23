@@ -1,0 +1,152 @@
+/*Q1*/
+
+create table My_Employee(
+  empId int,
+  firstName varchar2(20),
+  lastName varchar2(20),
+  salary number(5));
+
+insert all
+into My_employee(empId,firstName,lastName,salary)
+ values(104,'VijinSS','Subramaniyan',50000.12)
+into My_employee(empId,firstName,lastName,salary)
+ values(105,'VijXX','drtttuuugb',40001)
+into My_employee(empId,firstName,lastName,salary)
+ values(106,'VijiAA','fmjhhjjjhhgggjjj',3000.98)
+select * from My_Employee dual;
+ SELECT firstname from my_employee
+
+select concat(SUBSTR(firstName,1,1),SUBSTR(lastName,1,7)) as "USER ID" from My_Employee
+
+====================================================================================
+/*Q2*/
+
+CREATE table ep1(
+  employee int,
+  salary int);
+
+insert into ep1 values(104,1001)
+
+
+select * from ep1;
+
+select employee from ep1 where salary> 1000;
+
+================================================================================
+/*Q3*/
+
+create table name(
+  id int,
+  name varchar2(50));
+
+insert into name values(5,'mqwarsfdgxcvmnkljkop iojlk')
+
+select initcap(name), length(name) from name where name like 'j%' or name like 'm%';
+
+==================================================================================
+/*Q4*/
+drop table empl
+
+create table empl(
+ empName varchar2(20),
+ empNo int,
+ salary number(5),
+ commission number(6));
+
+insert into empl values('Abhijith',15,1000.25,null)
+
+select instr(empname,'A') as "postion" from empl;
+
+select * from empl
+
+========================================================================
+/*Q5*/
+
+SELECT MIN(salary),MAX(salary),SUM(salary), AVG(salary) from empl;
+
+========================================================================
+/*Q6*/
+
+select empName,empNo,salary, ROUND(salary+(salary*0.15)) as "New salary" from empl;
+
+=========================================================================
+/*Q7*/
+
+SELECT empName, LPAD(salary,15,'$') as "SALARY LPAD" from empl;
+
+==========================================================================
+/*Q7*/
+
+SELECT empName,commission, NVL(TO_CHAR(COMMISSION),'NO COMMISSION')updating from empl;  /*NVL is to replace null , TO_Char(character) is convert number to string values*/
+
+==========================================================================
+/*Q8*/
+
+create table std(
+   firstName varchar(15) unique,
+   mark number(2),
+   id int unique);
+
+insert into std values('abcdefghij',85,4)
+
+select * from std;
+
+select * from std where length(firstname)=10;
+
+=======================================================================
+/*Q9*/
+
+create table manager(
+   managerName varchar2(10),
+   managerId number(3) primary key);
+
+create table emply(
+   empName varchar2(20),
+   empId number(2),
+   managerID number(3),
+   salary number(5)
+);
+
+insert into manager values('Abhijith',141)
+insert into emply values('ghj',70,null,1250)
+
+select * from emply;
+
+select managerId, MIN(salary) from emply where managerId is not null group by managerId having MIN(salary)>1000 ORDER BY MIN(salary);
+
+select managerid  , sum(salary) from emply group by managerid  having  min(salary)>1000 and managerid is  not null order by min(salary);
+
+
+=======================================================================
+/*Q10*/
+
+create table emy(
+  e_name varchar2(20),
+  hire_date date,
+  salary number(4));
+
+
+ALTER TABLE emy modify salary number(8);
+insert into emy values('Anu','01-28-2022',234)
+select * from emy
+
+SELECT e_name, hire_date,salary, TO_CHAR(NEXT_DAY(ADD_MONTHS(hire_date,6),'Monday'),' Day, "the " Ddspth "of" Month YYYY ')"REVIEW DATE" FROM emy;
+
+
+
+SELECT TO_CHAR(hire_date, 'Ddspth')||' '||TO_CHAR(hire_date, 'MONTH')||' , '|| TO_CHAR(hire_date, 'YYYY') FROM emy;
+
+SELECT next_month('03-17-2023') FROM DUAL;
+
+
+=========================================================================
+/*Q11*/
+
+SELECT e_name, hire_date, ROUND(MONTHS_BETWEEN(sysdate,hire_date)) AS "Months Worked" FROM emy;
+
+===========================================================================
+/*Q12*/
+
+SELECT e_name, salary, ((CEIL(salary/1000)*1000*12)*0.3)"Bonus" FROM emy; /*CEIL is use for return nearest largest integer*/
+
+
