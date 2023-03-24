@@ -1,0 +1,104 @@
+create table computer(
+serial_number int primary key not null,
+mf_name varchar(20),
+model varchar(20),
+weight int,
+computer_is_ative varchar(20),
+employeeId int not null,
+CONSTRAINT Foreignkey_pl FOREIGN KEY(employeeId)REFERENCES employee(employeeId),
+CONSTRAINT ForeignKey_ql FOREIGN KEY(mf_name)REFERENCES manufacturer(mf_name));
+select * from computer
+
+INSERT ALL 
+into computer(serial_number,mf_name,model,weight,computer_is_ative,employeeId)
+values(100,'DELL','IDEA_PAD',1,'IN_USE',10)
+into computer(serial_number,mf_name,model,weight,computer_is_ative,employeeId)
+values(101,'HP','YOGA',2,'NOT_IN_USE',11)
+into computer(serial_number,mf_name,model,weight,computer_is_ative,employeeId)
+values(102,'LENOVO','THINK_BOOK',1,'IN_USE',12)
+SELECT * FROM DUAL;
+SELECT * FROM COMPUTER;
+drop table computer
+
+
+
+create table employee(
+employeeId int not null primary key,
+empname varchar(20),
+phone int,
+email varchar(20),
+area_code int);
+drop table employee
+INSERT ALL
+into employee(employeeId,empname,phone,email,area_code)
+values(10,'sam',9568569856,'sam@gmail.com',23)
+into employee(employeeId,empname,phone,email,area_code)
+values(11,'simon',1234567895,'simon@gmail.com',21)
+into employee(employeeId,empname,phone,email,area_code)
+values(12,'sanu',9874563215,'sanu@gmail.com',24)
+select * from dual;
+select * from employee;
+drop table employee
+
+
+
+create table manufacturer(
+mf_name varchar(20) primary key,
+city varchar(20),
+state varchar(20)
+);
+select * from manufacturer
+insert all 
+into manufacturer(mf_name,city,state)
+values('DELL','TOKYOS','SOUTH_DALLAS')
+into manufacturer(mf_name,city,state)
+values('HP','TOKYOS','SOUTH_DALLAS')
+into manufacturer(mf_name,city,state)
+values('LENOVO','TEXAS','FRANCE')
+SELECT * from dual;
+SELECT * from manufacturer
+drop table manufacturer
+
+1.
+SELECT * from manufacturer WHERE state ='SOUTH_DALLAS'
+
+2.
+
+select avg(weight) from COMPUTER where computer_is_ative='IN_USE'
+
+3.
+
+select EMPNAME from employee where area_code LIKE '2%'
+4.
+
+select SERIAL_NUMBER from computer where weight<(select avg(weight) from computer)
+5.
+SELECT mf_name from COMPUTER where computer_is_ative='NOT_IN_USE'
+6.
+SELECT empname,serial_number,city FROM computer JOIN employee ON computer.employeeId = employee.employeeId JOIN manufacturer ON manufacturer.mf_name =computer.mf_name;
+7.
+CREATE OR REPLACE PROCEDURE ACCEPTEMPLOYEEID(employeeId IN number)
+IS
+ s number;
+ mf varchar2;
+ m varchar2;
+ w number;
+ E number;
+BEGIN
+E=employeeId
+  DESC COMPUTER
+  SELECT serial_number,mf_name,model,weight into s,mf,m,w,e from computer where employeeId=E;
+  DBMS_OUTPUT.PUT_LINE('serialNumber 's' mf_name 'mf' model 'm' weight of computer '||w);
+END;
+
+DECLARE
+  e computer.e_number;
+BEGIN
+  e:=:employeeId;
+  acceptEmployeeId(e);
+end;
+
+
+
+
+  
